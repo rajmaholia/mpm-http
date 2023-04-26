@@ -1,0 +1,22 @@
+{
+    "name": "mpm/http",
+    "description": "Handy way to handle HTTP Request Response",
+    "type": "library",
+    "require": {
+        "php": "^8.0",
+        "mpm/routing": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mpm\\Http\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "raaz maholia",
+            "email": "maholialekhraj46@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

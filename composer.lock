@@ -1,0 +1,65 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d1d000453dd7fa68d591b5a44bc9e4b8",
+    "packages": [
+        {
+            "name": "mpm/routing",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Rajryan/mpm-routing.git",
+                "reference": "7485765ab7e05049e5d91caa0357ae144cfd9c27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Rajryan/mpm-routing/zipball/7485765ab7e05049e5d91caa0357ae144cfd9c27",
+                "reference": "7485765ab7e05049e5d91caa0357ae144cfd9c27",
+                "shasum": ""
+            },
+            "require": {
+                "mpm/http": "^1.0",
+                "php": "^8.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mpm\\Routing\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "raaz maholia",
+                    "email": "maholialekhraj46@gmail.com"
+                }
+            ],
+            "description": "Mpm Router",
+            "support": {
+                "issues": "https://github.com/Rajryan/mpm-routing/issues",
+                "source": "https://github.com/Rajryan/mpm-routing/tree/v1.0.0"
+            },
+            "time": "2023-04-26T12:28:03+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "mpm/routing": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "^8.0"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "2.2.0"
+}
