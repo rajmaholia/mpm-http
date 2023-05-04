@@ -6,12 +6,12 @@ class Request {
    * @var string 
    * 
    */
-    public  $method;
+    private  $method;
     
     /**
      * @var string
      */
-    public $uri;
+    private $uri;
      
     /** 
      * 
@@ -30,7 +30,7 @@ class Request {
     * Equivalent to $_POST
     * @var array 
     */
-    public  $post;
+    private  $post;
     
     /**
      * Equivalent to $_GET 
@@ -38,27 +38,27 @@ class Request {
      * @var Array 
      * 
      */
-    public  $get;
+    private  $get;
     
     /**
      * Equivalent to $_SERVER 
      * 
      * @var array 
      */
-    public  $server;
+    private  $server;
     
     /**
      * Equivalent to $_COOKIE
      * @var array 
      */
-    public  $cookies;
+    private  $cookies;
     
     /** 
      * Equivalent to $_ENV
      * 
      * @var array
      */
-    public  $env;
+    private  $env;
     
     /**
      * Current User
@@ -66,15 +66,20 @@ class Request {
      * @var array 
      * 
      */
-    public  $user;
+    private  $user;
     
     /**
      * Equivalent to $_FILES 
      * 
      * @var array 
      */
-     public $files;
-
+     private $files;
+    
+    /**
+     * Session
+     */
+    private $session;
+    
     public function __construct($method, $uri, $headers, $body) {
         $this->method = $method;
         $this->uri = $uri;
@@ -86,8 +91,12 @@ class Request {
         $this->server = (object)$_SERVER;
         $this->env = (object)$_ENV;
         $this->files = (object)$_FILES;
-        //$this->user = (object)$_SESSION["user"];
     }
+/*
+  public function __call($name, $arguments)
+    {
+        return call_user_func($this->{$name}, $arguments);
+    }*/
     
     public function getMethod() {
         return $this->method;
@@ -96,17 +105,49 @@ class Request {
     public function method(){
       return $this->method;
     }
-
-    public function getUri() {
-        return $this->uri;
-    }
     
     public function uri(){
       return $this->uri;
     }
+    
+    public function cookies(){
+      return $this->cookies;
+    }
+    
+    public function server(){
+      return $this->server;
+    }
+    
+    public function body(){
+      return $this->body;
+    }
+    
+    public function post(){
+      return $this->post;
+    }
+    
+    public function get(){
+      return $this->get;
+    }
+    
+    public function env(){
+      return $this->env;
+    }
+    
+    public function getUri() {
+        return $this->uri;
+    }
+    
+   public function user(){
+     return isset($_SESSION["user"])?(object)$_SESSION["user"]:null;
+   }
 
     public function getHeaders() {
         return $this->headers;
+    }
+    
+    public function session(){
+      return $this->session;
     }
     
     public function headers(){
@@ -132,5 +173,10 @@ class Request {
     
     public static function init(){
       return new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'], getallheaders(), file_get_contents('php://input'));
+    }
+    
+    public function addMethod($name, $method)
+    {
+        $this->{$name} = $method;
     }
 }
