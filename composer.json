@@ -10,7 +10,8 @@
     "autoload": {
         "psr-4": {
             "Mpm\\Http\\": ""
-        }
+        },
+        "files":["middleware/helpers.php"]
     },
     "authors": [
         {

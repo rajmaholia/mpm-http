@@ -73,11 +73,6 @@ class Response {
   /**
    * @var string 
    */
-  protected $content;
-  
-  /**
-   * @var string 
-   */
   protected $version;
   
   /**
@@ -94,6 +89,11 @@ class Response {
    * @var string 
    */
   protected $charset;
+  
+  /**
+   * @var string 
+   */
+  protected $content;
   
   /**
    * Status code translation table 

@@ -41,6 +41,12 @@ class Request {
     private  $get;
     
     /**
+     * Equivalent to $_REQUEST 
+     */
+     private $input;
+     
+     
+    /**
      * Equivalent to $_SERVER 
      * 
      * @var array 
@@ -85,12 +91,14 @@ class Request {
         $this->uri = $uri;
         $this->headers = $headers;
         $this->body = $body;
-        $this->post = $_POST;
-        $this->get = $_GET;
+        $this->post = (object)$_POST;
+        $this->get = (object)$_GET;
+        $this->input = $_REQUEST;
         $this->cookies = $_COOKIE;
         $this->server = (object)$_SERVER;
         $this->env = (object)$_ENV;
         $this->files = (object)$_FILES;
+        
     }
 /*
   public function __call($name, $arguments)
@@ -122,12 +130,18 @@ class Request {
       return $this->body;
     }
     
-    public function post(){
-      return $this->post;
+    public function post($arg=null){
+     if($arg==null) return $this->post;
+     else return $this->post->$arg;
     }
     
     public function get(){
       return $this->get;
+    }
+    
+    public function input($arg=null){
+      if($arg==null) return $this->input;
+      else return isset($this->input[$arg])?$this->input[$arg]:null;
     }
     
     public function env(){
